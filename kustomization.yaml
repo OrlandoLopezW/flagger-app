@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - demo-app.yaml
 - flagger.yaml
-- flagger-flux-role.yaml
+#- flagger-flux-role.yaml
