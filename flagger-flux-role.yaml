@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: flux-applier-role
+  namespace: flagger-system
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "list", "watch"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: flux-applier-rolebinding
+  namespace: flagger-system
+subjects:
+  - kind: ServiceAccount
+    name: flux-applier
+    namespace: flagger-system
+roleRef:
+  kind: Role
+  name: flux-applier-role
+  apiGroup: rbac.authorization.k8s.io
